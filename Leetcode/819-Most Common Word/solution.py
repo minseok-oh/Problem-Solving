@@ -1,0 +1,11 @@
+from ast import List
+import collections
+import re
+
+
+def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        words = [word for word in re.sub('[^\w]', ' ', paragraph)
+                .lower().split()
+                        if word not in banned]
+        counts = collections.Counter(words)
+        return counts.most_common(1)[0][0]
